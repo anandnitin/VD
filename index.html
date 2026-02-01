@@ -172,7 +172,7 @@
     position: absolute;
     font-size: 30px;
     cursor: pointer;
-    animation: fall 3s linear;
+    animation: fall 5s linear;
 }
 
 @keyframes fall {
@@ -209,6 +209,67 @@
         position: relative;
     }
 }
+.merge-screen {
+    display: none;
+    animation: slideIn 0.6s ease-out;
+}
+
+.github-card {
+    background: #0d1117;
+    color: #c9d1d9;
+    padding: 30px;
+    border-radius: 12px;
+    font-family: monospace;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+.github-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #3fb950;
+    margin: 15px 0;
+    font-size: 1.2em;
+}
+
+.check {
+    background: #238636;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+}
+
+.merge-text {
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.merge-btn {
+    margin-top: 20px;
+    background: #238636;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: default;
+}
 
 
     </style>
@@ -236,6 +297,31 @@
             <p>You healed my heart! 💖<br>
             This developer just got his best code compiled! 💻<br>
             You + Me = Perfect Match! ✨</p>
+        </div>
+
+        <div id="mergeScreen" class="merge-screen">
+            <div class="github-card">
+                <div class="github-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+
+                <h2>Pull Request #2026</h2>
+
+                <div class="status">
+                    <span class="check">✔</span>
+                    <strong>Merge Accepted</strong>
+                </div>
+
+                <p class="merge-text">
+                    Your heart has been successfully merged into mine 💚<br>
+                    No conflicts detected.<br>
+                    Relationship status: <strong>Production Ready 🚀</strong>
+                </p>
+
+                <button class="merge-btn">Merged Successfully 🎉</button>
+            </div>
         </div>
     </div>
 
@@ -316,10 +402,10 @@ function spawnHeart() {
         }
     });
 
-    setTimeout(() => heart.remove(), 3000);
+    setTimeout(() => heart.remove(), 5000);
 }
 
-setInterval(spawnHeart, 1200);
+setInterval(spawnHeart, 1800);
 
 
         // Move "No" button away from cursor
@@ -366,7 +452,13 @@ setInterval(spawnHeart, 1200);
 
             // Show celebration
             proposal.style.display = 'none';
-            celebration.style.display = 'block';
+celebration.style.display = 'block';
+
+setTimeout(() => {
+    celebration.style.display = 'none';
+    document.getElementById("mergeScreen").style.display = "block";
+}, 2500);
+
         });
     </script>
 </body>
