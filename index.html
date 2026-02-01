@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💝 A Special Question 💝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        .profession-icon {
+            position: absolute;
+            font-size: 30px;
+            animation: float 8s infinite ease-in-out;
+            opacity: 0.5;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .container {
+            background: white;
+            padding: 50px 60px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            position: relative;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .question {
+            font-size: 1.5em;
+            color: #333;
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+
+        .buttons-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 80px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: none;
+        }
+
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+        }
+
+        #noBtn {
+            background: #f0f0f0;
+            color: #666;
+            position: absolute;
+        }
+
+        .celebration {
+            display: none;
+            animation: celebrate 0.6s ease-out;
+        }
+
+        @keyframes celebrate {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .celebration h2 {
+            color: #764ba2;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .celebration p {
+            font-size: 1.3em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .hearts-burst {
+            position: absolute;
+            font-size: 30px;
+            animation: burst 1s ease-out forwards;
+        }
+
+        @keyframes burst {
+            from {
+                transform: translate(0, 0) scale(0);
+                opacity: 1;
+            }
+            to {
+                transform: translate(var(--x), var(--y)) scale(1);
+                opacity: 0;
+            }
+        }
+        #game {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.falling-heart {
+    position: absolute;
+    font-size: 30px;
+    cursor: pointer;
+    animation: fall 3s linear;
+}
+
+@keyframes fall {
+    from { top: -40px; }
+    to { top: 100vh; }
+}
+@media (max-width: 600px) {
+
+    .container {
+        padding: 30px 20px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .question {
+        font-size: 1.2em;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+    }
+
+    #noBtn {
+        position: relative;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="game">
+    <h2>💘 Catch 3 Hearts to Unlock 💘</h2>
+    <p>Score: <span id="score">0</span>/3</p>
+</div>
+
+        <div id="proposal">
+            <h1>👨‍⚕️💝👨‍💻</h1>
+            <div class="question">
+                Will you debug my heart and be my Valentine? 🌹
+            </div>
+            <div class="buttons-container">
+                <button id="yesBtn">Yes! 💕</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+        
+        <div id="celebration" class="celebration">
+            <h2>🎉 Yay! 🎉</h2>
+            <p>You healed my heart! 💖<br>
+            This developer just got his best code compiled! 💻<br>
+            You + Me = Perfect Match! ✨</p>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-piano-loop-977.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener("click", () => {
+            document.getElementById("bgMusic").play();
+        }, { once: true });
+
+        
+        // Create floating hearts and profession icons in background
+        function createFloatingHearts() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝'];
+            const doctorIcons = ['🩺', '💊', '⚕️', '🏥', '💉'];
+            const devIcons = ['💻', '⌨️', '🖥️', '💾', '🖱️'];
+            
+            // Add hearts
+            for (let i = 0; i < 10; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                document.body.appendChild(heart);
+            }
+            
+            // Add doctor icons
+            for (let i = 0; i < 5; i++) {
+                const icon = document.createElement('div');
+                icon.className = 'profession-icon';
+                icon.textContent = doctorIcons[Math.floor(Math.random() * doctorIcons.length)];
+                icon.style.left = Math.random() * 100 + '%';
+                icon.style.top = Math.random() * 100 + '%';
+                icon.style.animationDelay = Math.random() * 4 + 's';
+                document.body.appendChild(icon);
+            }
+            
+            // Add developer icons
+            for (let i = 0; i < 5; i++) {
+                const icon = document.createElement('div');
+                icon.className = 'profession-icon';
+                icon.textContent = devIcons[Math.floor(Math.random() * devIcons.length)];
+                icon.style.left = Math.random() * 100 + '%';
+                icon.style.top = Math.random() * 100 + '%';
+                icon.style.animationDelay = Math.random() * 4 + 's';
+                document.body.appendChild(icon);
+            }
+        }
+
+        createFloatingHearts();
+
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const proposal = document.getElementById('proposal');
+        const celebration = document.getElementById('celebration');
+
+        let score = 0;
+
+function spawnHeart() {
+    const heart = document.createElement("div");
+    heart.className = "falling-heart";
+    heart.textContent = "💖";
+    heart.style.left = Math.random() * 90 + "%";
+    document.body.appendChild(heart);
+
+    heart.addEventListener("click", () => {
+        score++;
+        document.getElementById("score").textContent = score;
+        heart.remove();
+
+        if (score >= 3) {
+            document.getElementById("game").style.display = "none";
+            document.getElementById("yesBtn").style.display = "inline-block";
+        }
+    });
+
+    setTimeout(() => heart.remove(), 3000);
+}
+
+setInterval(spawnHeart, 1200);
+
+
+        // Move "No" button away from cursor
+        noBtn.addEventListener('mouseover', function() {
+            const container = document.querySelector('.buttons-container');
+            const containerRect = container.getBoundingClientRect();
+            
+            // Random position within the container area
+            const maxX = 200;
+            const maxY = 40;
+            const randomX = (Math.random() - 0.5) * maxX;
+            const randomY = (Math.random() - 0.5) * maxY;
+            
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+
+        // Also prevent clicking the No button
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const maxX = 200;
+            const maxY = 40;
+            const randomX = (Math.random() - 0.5) * maxX;
+            const randomY = (Math.random() - 0.5) * maxY;
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+
+        // Handle "Yes" button
+        yesBtn.addEventListener('click', function() {
+            // Create hearts burst effect
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'hearts-burst';
+                heart.textContent = '💖';
+                heart.style.left = '50%';
+                heart.style.top = '50%';
+                const angle = (Math.PI * 2 * i) / 20;
+                const distance = 200;
+                heart.style.setProperty('--x', Math.cos(angle) * distance + 'px');
+                heart.style.setProperty('--y', Math.sin(angle) * distance + 'px');
+                document.querySelector('.container').appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 1000);
+            }
+
+            // Show celebration
+            proposal.style.display = 'none';
+            celebration.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
