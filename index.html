@@ -79,6 +79,7 @@
             color: #333;
             margin: 30px 0;
             line-height: 1.6;
+            display: none;
         }
 
         .buttons-container {
@@ -397,6 +398,7 @@ function spawnHeart() {
 
         if (score >= 3) {
             document.getElementById("game").style.display = "none";
+            document.querySelector(".question").style.display = "block";
             document.getElementById("yesBtn").style.display = "inline-block";
         }
     });
