@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💝 A Special Question 💝</title>
+    <title>💝 For Someone Special 💝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,13 +13,34 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fdfbfb 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+            background-size: 100px 100px, 150px 150px, 200px 200px;
+            animation: sparkle 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .heart {
@@ -41,14 +63,15 @@
         }
 
         .container {
-            background: white;
+            background: linear-gradient(145deg, #ffffff 0%, #fff5f5 100%);
             padding: 50px 60px;
             border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(255, 105, 135, 0.3), 0 0 40px rgba(255, 182, 193, 0.4);
             text-align: center;
             max-width: 500px;
             position: relative;
             animation: slideIn 0.6s ease-out;
+            border: 2px solid rgba(255, 182, 193, 0.5);
         }
 
         @keyframes slideIn {
@@ -63,10 +86,12 @@
         }
 
         h1 {
-            color: #764ba2;
-            font-size: 2.5em;
+            font-family: 'Dancing Script', cursive;
+            color: #e75480;
+            font-size: 2.8em;
             margin-bottom: 20px;
             animation: pulse 2s infinite;
+            text-shadow: 2px 2px 4px rgba(231, 84, 128, 0.2);
         }
 
         @keyframes pulse {
@@ -76,10 +101,11 @@
 
         .question {
             font-size: 1.5em;
-            color: #333;
+            color: #c44569;
             margin: 30px 0;
             line-height: 1.6;
             display: none;
+            font-weight: 600;
         }
 
         .buttons-container {
@@ -103,15 +129,16 @@
         }
 
         #yesBtn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6b8a 0%, #ff8e9e 50%, #e75480 100%);
             color: white;
             display: none;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
 
         #yesBtn:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+            box-shadow: 0 6px 25px rgba(231, 84, 128, 0.5);
         }
 
         #noBtn {
@@ -138,8 +165,9 @@
         }
 
         .celebration h2 {
-            color: #764ba2;
-            font-size: 2em;
+            font-family: 'Dancing Script', cursive;
+            color: #e75480;
+            font-size: 2.2em;
             margin-bottom: 20px;
         }
 
@@ -167,7 +195,7 @@
         }
         #game {
     margin-bottom: 20px;
-    color: #333;
+    color: #c44569;
 }
 
 .falling-heart {
@@ -284,20 +312,21 @@
 </div>
 
         <div id="proposal">
-            <h1>👨‍⚕️💝👨‍💻</h1>
+            <h1>👩🏻‍⚕️💝👨🏽‍💻</h1>
             <div class="question">
                 Will you debug my heart and be my Valentine? 💌🥺👉🏽👈🏽🥺💌
             </div>
             <div class="buttons-container">
-                <button id="yesBtn">Yes! 💕</button>
+                <button id="yesBtn">Yes, even ILYSM, just shy enough to confront.💯</button>
                 <button id="noBtn">No</button>
             </div>
         </div>
         
         <div id="celebration" class="celebration">
-            <h2>Yay! This developer just got his best code compiled!💻</h2>
-            <p>You are the calm my heart needed.💖<br>
-            Uumm, You + Me = Perfect Match!✨</p>
+            <h2>Yayyy, you said Yes! This developer got his best code compiled today.💖</h2>
+            <p>Babes, tbh you're the calm my heart needed. ILYSM.💖<br>
+            I don’t need another win, just you, forever & always.🫶<br>
+            <span style="font-size: 0.9em; color: #e75480;"> I promise to love you more than my code loves bugs, chal ja padhne baith ab.</span></p>
         </div>
 
         <div id="mergeScreen" class="merge-screen">
@@ -316,9 +345,9 @@
                 </div>
 
                 <p class="merge-text">
-                    Your heart has been successfully merged into mine 💚<br>
+                    Your heart has been successfully merged into mine.💚<br>
                     No conflicts detected.<br>
-                    Relationship status: <strong>Production Ready 🚀</strong>
+                    Relationship status: <strong>Production Ready 🚀 (🫦💦😉)</strong>
                 </p>
 
                 <button class="merge-btn">Merged Successfully 🎉</button>
@@ -460,7 +489,7 @@ celebration.style.display = 'block';
 setTimeout(() => {
     celebration.style.display = 'none';
     document.getElementById("mergeScreen").style.display = "block";
-}, 5000);
+}, 20000);
 
         });
     </script>
